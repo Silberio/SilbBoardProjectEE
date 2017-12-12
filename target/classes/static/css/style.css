@@ -1,0 +1,17 @@
+.newmessage {
+	margin-left: 5px;
+	margin-bottom: 6px;
+	background-color: #e3e8ef;
+	border-style: solid;
+	border-radius: 8px;
+}
+
+h4 {
+	margin-left: 3%;
+	margin-top: 1px;
+}
+
+p {
+	margin-left:5%;
+	margin-bottom: 1px;
+}

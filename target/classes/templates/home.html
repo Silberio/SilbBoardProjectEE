@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+<title>SilbBoard :-)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+	rel="stylesheet" type="text/css" />
+
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css" />
+<link rel="stylesheet" href="css/skeleton.css" />
+<link rel="stylesheet" href="css/style.css" />
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/png" href="images/favicon.png" />
+
+</head>
+
+<body>
+	<h1>Welcome to SilbBoard!</h1>
+	<h2>Below are your displayed messages:</h2>
+	<div class="row">
+		<div class="one-half column">
+			<div class="newmessage" th:each="message : ${messages}">
+				<h4>New Message</h4>
+				<p th:text="${message.id}" />
+				<p th:text="${message.message}" />
+				<p th:text="${message.user}" />
+				
+				<a th:href="@{/delete(msgID=${message.id})}" style="margin-left: 5%">Delete Post</a>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<!-- New Message button -->
+		<div class="two columns">
+			<form action="home">
+				<input type="submit" value="Submit Another Message" />
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
