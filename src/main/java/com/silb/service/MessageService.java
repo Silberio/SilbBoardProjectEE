@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import com.silb.model.Message;
 import com.silb.model.MessagesDaoImpl;
 
+/**
+ * Service class implementation of Messages data access object.
+ * @author silberio_stalone
+ *
+ */
 @Service
 public class MessageService {
 
