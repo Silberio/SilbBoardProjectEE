@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: SilbBoardProjectEE
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: silberio_stalone
+Built-By: bish0p
 Implementation-Vendor-Id: com.silb
-Build-Jdk: 1.8.0_91
+Build-Jdk: 1.8.0_151
 Implementation-URL: http://projects.spring.io/spring-boot/SilbBoardPro
  jectEE/
 Created-By: Maven Integration for Eclipse

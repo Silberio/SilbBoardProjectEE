@@ -20,8 +20,10 @@ import com.silb.service.MessageService;
  * 
  * <p>
  * Implements all the methods from the service DAO through an autowired
- * MessageService class
+ * MessageService class.	
  * </p>
+ * All data is stored locally and dies upon application closing. Later version
+ * will include JDBC implementation.
  * 
  * @author silberio_stalone
  *
@@ -52,16 +54,19 @@ public class MessageController {
 	/**
 	 * Adds a new message to the board
 	 * <p>
-	 * Creates a new Message object with input from an HTTP Request.
-	 * The request is added as a parameter to the message.setMessage() 
-	 * method. The new Message object is added to the MessageService 
-	 * repository before being added to a model, ergo the actual webpage.
+	 * Creates a new Message object with input from an HTTP Request. The request is
+	 * added as a parameter to the message.setMessage() method. The new Message
+	 * object is added to the MessageService repository before being added to a
+	 * model, ergo the actual webpage.
 	 * </p>
-	 * If the message is empty, a default value of "Privet Mir" (Hello world, in Russian)
-	 * is added and the User is set as Guest User. For now the user is hardcoded.
-	 *  
-	 * @param request the request taken from a form in /messageform
-	 * @param model the model attribute to which the message is added
+	 * If the message is empty, a default value of "Privet Mir" (Hello world, in
+	 * Russian) is added and the User is set as Guest User. For now the user is
+	 * hardcoded.
+	 * 
+	 * @param request
+	 *            the request taken from a form in /messageform
+	 * @param model
+	 *            the model attribute to which the message is added
 	 * @return /home the webpage in which messages are displayed
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
@@ -85,16 +90,18 @@ public class MessageController {
 	/**
 	 * Deletes a message by ID
 	 * <p>
-	 * This method is called through a link in each newmessage div in the /home page. 
-	 * Each link is mapped to its' specific message. When the <i>Delete Post</i> link 
-	 * is clicked, a GET request is sent passing the message id from the message and 
-	 * this method is invoked, deleting the message from the repository.
+	 * This method is called through a link in each newmessage div in the /home
+	 * page. Each link is mapped to its' specific message. When the <i>Delete
+	 * Post</i> link is clicked, a GET request is sent passing the message id from
+	 * the message and this method is invoked, deleting the message from the
+	 * repository.
 	 * </p>
-	 * This method does not actually delete the message from the /home page, but 
-	 * deletes it from the repository, and next time /home is loaded, it reloads all 
+	 * This method does not actually delete the message from the /home page, but
+	 * deletes it from the repository, and next time /home is loaded, it reloads all
 	 * messaes, sans the ones that got deleted.
 	 * 
-	 * @param msgID ID of the message to be deleted
+	 * @param msgID
+	 *            ID of the message to be deleted
 	 * @return redirects to /home.
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
