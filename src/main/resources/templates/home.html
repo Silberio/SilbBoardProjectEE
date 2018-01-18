@@ -21,33 +21,17 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <link rel="icon" type="image/png" href="images/favicon.png" />
 
+<script src="https://unpkg.com/react@15.6.1/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15.6.1/dist/react-dom.js"></script>
+
+
 </head>
 
 <body>
 	<h1>Welcome to SilbBoard!</h1>
-	<h2>Below are your displayed messages:</h2>
-	<div class="row">
-		<div class="one-half column">
-			<div class="newmessage" th:each="message : ${messages}">
-				<h4>New Message</h4>
-				<p th:text="${message.id}" />
-				<p th:text="${message.message}" />
-				<p th:text="${message.user}" />
-				
-				<a th:href="@{/delete(msgID=${message.id})}" style="margin-left: 5%">Delete Post</a>
-			</div>
-
-		</div>
-	</div>
-
-	<div class="row">
-		<!-- New Message button -->
-		<div class="two columns">
-			<form action="home">
-				<input type="submit" value="Submit Another Message" />
-			</form>
-		</div>
-	</div>
+	<div id="root"></div>
+	
+	 <script src="src/main/js/app.js" type="text/jsx"></script>
 </body>
 
 </html>

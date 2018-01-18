@@ -1,5 +1,11 @@
 package com.silb.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import lombok.Data;
+
 /**
  * Simple message bean
  * <p>
@@ -10,21 +16,27 @@ package com.silb.model;
  * @author bish0p
  *
  */
+@Entity
 public class Message {
 
-	private int id;
-	private String message;
+	private @Id @GeneratedValue Long id;
+	private String content;
 	private String user;
 
-	public Message() {
+	private	 Message() {
+	}
+	
+	public Message(String content, String user) {
+		this.setContent(content);
+		this.setUser(user);
 	}
 
-	public String getMessage() {
-		return message;
+	public String getContent() {
+		return content;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public String getUser() {
@@ -34,13 +46,7 @@ public class Message {
 	public void setUser(String user) {
 		this.user = user;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	
+	
 
 }

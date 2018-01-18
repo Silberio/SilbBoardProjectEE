@@ -1,0 +1,29 @@
+{
+  "name": "SilbBoardProjectEE",
+  "version": "1.0.0",
+  "description": "## Getting Started",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silberio/SilbBoardProjectEE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Silberio/SilbBoardProjectEE/issues"
+  },
+  "homepage": "https://github.com/Silberio/SilbBoardProjectEE#readme",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.0"
+  },
+  "devDependencies": {
+    "react-scripts": "^1.1.0"
+  }
+}
