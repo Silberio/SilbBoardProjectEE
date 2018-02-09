@@ -46,9 +46,9 @@ public class MessageController {
 	 * 
 	 * @return /messageform
 	 */
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String messageForm() {
-		return "messageform";
+		return "home";
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class MessageController {
 	 *            the model attribute to which the message is added
 	 * @return /home the webpage in which messages are displayed
 	 */
-	@RequestMapping(value = "/home", method = RequestMethod.POST)
+	@RequestMapping(value = "/messageform", method = RequestMethod.POST)
 	public String message(HttpServletRequest request, Model model) {
 		msg = new Message();
 
@@ -84,7 +84,7 @@ public class MessageController {
 		messageService.insertMessage(msg);
 
 		model.addAttribute("messages", messageService.getAllMessages());
-		return "home";
+		return "messageform";
 	}
 
 	/**
