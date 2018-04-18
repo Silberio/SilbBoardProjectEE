@@ -27,7 +27,8 @@ public class MessageService implements CommandLineRunner {
 	public void run(String... Strings) throws Exception {
 
 		this.repository.save(new Message("first message", "Silb"));
-		this.repository.save(new Message("second message", "Silb"));
+		this.repository.save(new Message("second message", "Dog"));
+		this.repository.save(new Message("third message", "God"));
 
 	}
 

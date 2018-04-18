@@ -33,86 +33,81 @@ class UserForm extends React.Component {
 
 const api = 'http://localhost:8080/api/messages/';
 
-class Message extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	
-	render() {
-		return(
+var Message = React.createClass({
+
+render: function() {
+		   return (
 			<div className="newmessage">
-			<p>user 1</p>
-			<p>message</p>
-			</div>
-			);
-	}
-}
+				<p>Message: {this.props.message.message}</p>
+				<p>User: {this.props.message.user}</p>
+			</div>);
+		}
+});
 
-class Content extends React.Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {messages: [],};
-		
-	}
+	    
+var App = React.createClass({
 	
-	componentDidMount() {
-	    fetch(api)
-	      .then(response => response.json())
-	      .then(data => this.setState({ messages: data.content }));
-	    console.log("state", this.state.messages);
-	}
+loadMessages: function() {
+	    var self = this;
+	    $.ajax({
+	      url: api
+	      }).then(function (data) {
+	      self.setState({messages: data._embedded.messages});
+	      console.log(data)
+	    });
+	  },
+	
+getInitialState: function () {
+		    return {messages: []};
+		  },
 
-	/*
-	componentDidMount() {
-		fetch(api)
-		.then(response => response.json())
-		.then(data => {
-			let messages = data.content.map((msg => {
-				return(
-					<div key={msg.content}>
-					<p>{msg.message.user}</p>
-					</div>
-					)
-			}))
-			this.setState({messages: data.content});
-			console.log("state", this.state.messages);
-	}
-*/
+componentDidMount: function () {
+		    this.loadMessages();
+		  },
+		  
 	render() {
 
 		return(
-				<div className="newmessage">
-				<p>user 2</p>
-				<p>message</p>
-				</div>
+				<MessageBoard messages={this.state.messages}/>
 			)
   	}
-}
+});
 
 
-class MessageBoard extends React.Component {
-	render () {
-	return (
-			<div className="one-third column">
+var MessageBoard = React.createClass({
+	
+render: function() {
+	    var msgs = [];
+	    this.props.messages.forEach(function(messages) {
+	    	msgs.push(<Message messages={message}/>
+	    		); 
+	    	});
+	    	
+	    return (
+	    		
+	    	<div className="one-third column">
 				<h3>Message Board: </h3>
-				<Content />
-			</div>
-		);
-	}
-}
+				<div>
+					{msgs}
+				</div>
+			</div>);
+		
+	  }
+	
 
-class App extends React.Component {
+});
+
+var Content = React.createClass({
 	render () {
 		return(
 			<div className="row">
 					<UserForm />
-					<MessageBoard />
+					<App />
 			</div>
 
 		);
 	}
-}
+});
 
-//REACT DOM
-ReactDOM.render(<App />, document.getElementById('root'));
+// REACT DOM
+ReactDOM.render(<Content />, document.getElementById('root'));
